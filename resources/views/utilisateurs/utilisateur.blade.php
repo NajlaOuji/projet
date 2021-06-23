@@ -18,6 +18,7 @@
         <link href={{asset('admin/assets/css/metismenu.min.css')}} rel="stylesheet" type="text/css">
         <link href={{asset('admin/assets/css/icons.css')}} rel="stylesheet" type="text/css">
         <link href={{asset('admin/assets/css/style.css')}} rel="stylesheet" type="text/css">
+        
     </head>
 
     <body>
@@ -179,7 +180,7 @@
                                     <div class="float-right d-none d-md-block">
                                         <div class="dropdown">
                                             <button class="btn btn-primary " type="button" >
-                                                <i class="mdi mdi-settings mr-2"></i> Ajouter
+                                                <i class=""></i> Ajouter Utilisateur
                                             </button>
                                          
                                         </div>
@@ -193,32 +194,52 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
+                                <div class="card-header">
+                                <form role="search" class="app-search">
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control" placeholder="Search..">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+</div>
                                     <div class="card-body">
                                     
-                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                            <thead>
-                                            <tr>
-                                                <th>Nom</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                                
-                                                
-                                            </tr>
-                                            </thead>
-                                            <tbody>          
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                    @if(Session::has('post_deleted'))
+<div class="alert alert-success" role="alert">
+{{Session::get('post_deleted')}}
+</div>
+@endif
+
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Id</th>
+<th>Nom && Prénom</th>
+<th>Email</th>
+<th>Mot de passe</th>
+<th>Rôle</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>
+
+ <a href="" class="btn btn-success">Modifier utilisateur</a>
+ <a href="" class="btn btn-danger">Retirer Utilisateur</a>
+</td>
+</tr>
+
+
+</tbody>
+</table>
+
 
                                     </div>
                                 </div>

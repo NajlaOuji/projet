@@ -60,7 +60,7 @@
 
                             <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-12 m-t-20">
-                                    <a href="pages-recoverpw-2.html"><i class="mdi mdi-lock"></i> Forgot your password?</a>
+                                    <a href="{{url('recover')}}"><i class="mdi mdi-lock"></i> Forgot your password?</a>
                                 </div>
                             </div>
                         </form>

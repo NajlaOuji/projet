@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('test');
+    return view('login');
 });
 Route::get('/recover', function () {
     return view('recover');
