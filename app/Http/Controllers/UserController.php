@@ -18,7 +18,7 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
-
+    
     public function getUser()
     {
       
@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required|image',
+           
             'email' => 'required|string|email|max:255|unique:users',
             'phone'     => 'required|min:11|numeric',
             'password'  => 'required|string|min:8|confirmed',
@@ -47,12 +47,10 @@ class UserController extends Controller
 
         ]);
 
-        $image = time().'.'.$request->image->extension();  
-        $request->image->move(public_path('images'), $image);
+        
 
      $user = User::create([
             'name' => $request->name,
-            'avatar' => $image,
             'email' => $request->email,
             'phone_number' => $request->phone,
             'password' => Hash::make($request->password),
@@ -87,13 +85,16 @@ class UserController extends Controller
         $id = $request->idp;
         $old_image = User::find($id);
         $image_name = $request->hidden_image;
-        $image = $request->file('picture');
+        /*$image = $request->file('picture');*/
 
-        $image_name = rand() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $image_name);
-        unlink('images/'.$old_image->avatar);
+        $image = time().'.'.$request->picture->extension();  
+        $request->picture->move(public_path('storage/users-avatar/'), $image);
+
+        /*$image_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('storage/users-avatar/'), $image_name);
+        unlink('storage/users-avatar/'.$old_image->avatar);*/
         $update = [  
-            'avatar' => $image_name,
+            'avatar' => $image,
         ];
         User::where('id',$request->idp)->update($update);
         Toastr::success('picture updated successfully :)','Success');

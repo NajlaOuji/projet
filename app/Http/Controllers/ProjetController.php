@@ -135,7 +135,7 @@ class ProjetController extends Controller
     public function updateEtat(Request $request)
     {
         $c4 = 1;
-        $user= User::find(1);
+        $user= User::find(23);
         $et = 'Terminé';
         try{
         $projet = Projet::find($request->idprojet);

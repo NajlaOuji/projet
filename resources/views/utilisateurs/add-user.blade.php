@@ -53,7 +53,7 @@ color: #7a797e;
                     {!! Toastr::message() !!}
                     <center>
                     <br>
-                    <form method="POST" action="{{route('user.create')}}" class="md-float-material" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('user.create')}}" class="md-float-material" >
                         @csrf
                         <div class="col-sm-10">
                         <div class="form-group position-relative has-icon-left mb-4">
@@ -68,12 +68,7 @@ color: #7a797e;
                             @enderror
                         </div>
 
-                        <div class="form-group position-relative has-icon-left mb-4">
-                            <input class="form-control @error('image') is-invalid @enderror" name="image" type="file" id="image" multiple="" required />
-                            <!--<div class="form-control-icon">
-                                <i class="bi bi-person-square"></i>
-                            </div>-->
-                        </div>
+                        
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Entrez une adresse email" required />

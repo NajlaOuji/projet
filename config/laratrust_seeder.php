@@ -13,16 +13,19 @@ return [
 
     'roles_structure' => [
         'administrator' => [
-            
+            'users' => 'c,r,u,d',
+            'payments' => 'c,r,u,d',
+            'profile' => 'r,u'
         ],
-        'chefdeprojet' => [
-            
+        'chefprojet' => [
+            'users' => 'c,r,u,d',
+            'profile' => 'r,u'
         ],
-        'membredeprojet' => [
-           
+        'membreprojet' => [
+            'profile' => 'r,u',
         ],
         'client' => [
-            
+            'module_1_name' => 'c,r,u,d',
         ]
     ],
 

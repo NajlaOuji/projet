@@ -335,7 +335,7 @@
                 <div class="dropdown notification-list nav-pro-img">
                     <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <div class="avatar avatar-xl">
-                                <img src="{{ URL::to('/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" class="rounded-circle">
+                                <img src="{{ URL::to('/storage/users-avatar/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" class="rounded-circle">
                             </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -422,7 +422,7 @@
                     <a href="{{url('tachemembre')}}" class="waves-effect"><i class="ti-bookmark-alt"></i><span> Tâches </span></a>
                 </li>
                 <li>
-                    <a href="{{url('conversation')}}" class="waves-effect"><i class="ti-email"></i><span> Mes conversations </span></a>
+                    <a href="{{url('chatify')}}" class="waves-effect"><i class="ti-email"></i><span> Mes conversations </span></a>
                 </li>
                 
                 @endif
@@ -755,7 +755,7 @@
                         <div class="modal-body">
                             <div class="form-group col">
                             <input type="hidden" name="idp" id="idp" value="{{ Auth::user()->id }}" />
-                                <div class="sidenav-header-inner"><img src="{{ URL::to('/images/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" class="img-fluid rounded-circle" width="30%"></div>
+                                <div class="sidenav-header-inner"><img src="{{ URL::to('/storage/users-avatar/'. Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" class="img-fluid rounded-circle" width="30%"></div>
                                 <br>
                                 <div class="row">
                                     <label for="Name" class="col-sm-4 control-label">Nom et prénom: </label>
