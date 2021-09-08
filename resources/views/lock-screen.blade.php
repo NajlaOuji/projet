@@ -59,7 +59,7 @@ color: #7a797e;
                         <form method="POST" action="{{ route('unlock') }}" class="form-horizontal m-t-30">
                         @csrf
                             <div class="user-thumb text-center m-b-30">
-                                <img src="{{ URL::to('/images/'. Auth::user()->avatar) }}" class="rounded-circle img-thumbnail" alt="{{ Auth::user()->avatar }}">
+                                <img src="{{ URL::to('/storage/users-avatar/'. Auth::user()->avatar) }}" class="rounded-circle img-thumbnail" alt="{{ Auth::user()->avatar }}">
                                 <h6>{{ Auth::user()->name }}</h6>
                             </div>
                             @if(session()->has('error'))

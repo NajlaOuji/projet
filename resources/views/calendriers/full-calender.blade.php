@@ -82,13 +82,13 @@
                                     @foreach (auth()->user()->notifications as $notification)
                                     <a href="javascript:void(0);" class="dropdown-item notify-item ">
                                         <div class="notify-icon bg-success"><i class="mdi mdi-folder"></i></div>
-                                        <p class="notify-details">Un nouveau projet est affecté <br> a vous :<span class="text-muted">
+                                        <p class="notify-details">Un nouveau projet <span class="text-muted">
                                          
                                            
-                                           {{$notification->markAsRead()}} 
-                                           {{$notification->data['titre']}}
-                                             
-                                        </span></p>
+                                         {{$notification->markAsRead()}} 
+                                         {{$notification->data['titre']}}
+                                           
+                                      </span> est affecté a vous.</p>
                                     </a>
                                     @endforeach
                                 </div>
@@ -116,13 +116,13 @@
                                     @foreach (auth()->user()->notifications as $notification)
                                     <a href="javascript:void(0);" class="dropdown-item notify-item ">
                                         <div class="notify-icon bg-success"><i class="mdi mdi-folder"></i></div>
-                                        <p class="notify-details">Un projet est Terminé <br> <span class="text-muted">
+                                        <p class="notify-details">le projet <span class="text-muted">
                                          
                                            
-                                           {{$notification->markAsRead()}} 
-                                           {{$notification->data['titre']}}
-                                             
-                                        </span></p>
+                                         {{$notification->markAsRead()}} 
+                                         {{$notification->data['titre']}}
+                                           
+                                      </span> est Terminé</p>
                                     </a>
                                     @endforeach
                                 </div>
@@ -151,46 +151,19 @@
                                     @if($notification->type === 'App\Notifications\TacheNotification' )
                                     <a href="javascript:void(0);" class="dropdown-item notify-item ">
                                         <div class="notify-icon bg-info"><i class="mdi mdi-folder"></i></div>
-                                        <p class="notify-details">Une nouvelle Tâche est affecté <br> a vous :<span class="text-muted">
+                                        <p class="notify-details">Une nouvelle Tâche <span class="text-muted">
                                          
                                            
-                                           {{$notification->markAsRead()}} 
-                                           {{$notification->data['titre']}}
-                                             
-                                        </span></p>
+                                         {{$notification->markAsRead()}} 
+                                         {{$notification->data['titre']}}
+                                           
+                                      </span>est affecté a vous.</p>
                                     </a>
                                     @endif
                                     @endforeach
-                                    <!-- item-->
-                                    @foreach (auth()->user()->notifications as $notification)
-                                    @if($notification->type === 'App\Notifications\ConverNotification' )
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item ">
-                                        <div class="notify-icon bg-warning"><i class="mdi mdi-message-text-outline"></i></div>
-                                        <p class="notify-details">Vous avez un nouveau message <br>  <span class="text-muted">
-                                         
-                                           envoyé par :
-                                           {{$notification->markAsRead()}} 
-                                           {{$notification->data['titre']}}
-                                             
-                                        </span></p>
-                                    </a>
-                                    @endif
-                                    @endforeach
-                                    <!-- item-->
-                                    @foreach (auth()->user()->notifications as $notification)
-                                    @if($notification->type === 'App\Notifications\MessageNotification' )
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item ">
-                                        <div class="notify-icon bg-warning"><i class="mdi mdi-message-text-outline"></i></div>
-                                        <p class="notify-details">Vous avez un nouveau message <br>  <span class="text-muted">
-                                         
-                                           envoyé par :
-                                           {{$notification->markAsRead()}} 
-                                           {{$notification->data['titre']}}
-                                             
-                                        </span></p>
-                                    </a>
-                                    @endif
-                                    @endforeach
+                                   
+                                    
+                                    
                                 </div>
                                 <!-- All-->
                                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
@@ -199,6 +172,45 @@
                             </div>
                         </li>
             @endif  
+            @if(Auth::user()->hasRole('client'))
+             <!-- notification -->
+             <li class="dropdown notification-list list-inline-item">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="mdi mdi-bell-outline noti-icon"></i>
+                                <span class="badge badge-pill badge-danger noti-icon-badge">{{auth()->user()->unreadNotifications->count()}}</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+                                <!-- item-->
+                                <h6 class="dropdown-item-text">
+                                        Notifications 
+                                    </h6>
+                                <div class="slimscroll notification-item-list">
+                                    <!-- item-->
+                                    @foreach (auth()->user()->notifications as $notification)
+                                    @if($notification->type === 'App\Notifications\ClientNotification' )
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item ">
+                                        <div class="notify-icon bg-info"><i class="mdi mdi-folder"></i></div>
+                                        <p class="notify-details">Votre projet <span class="text-muted">
+                                         
+                                           
+                                         {{$notification->markAsRead()}} 
+                                         {{$notification->data['titre']}}
+                                           
+                                      </span>  est terminé </p>
+                                    </a>
+                                    @endif
+                                    @endforeach
+                                   
+                                    
+                                    
+                                </div>
+                                <!-- All-->
+                                <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                                        All <i class="fi-arrow-right"></i>
+                                    </a>
+                            </div>
+                        </li>
+            @endif
 
             <li class="dropdown notification-list list-inline-item">
             
@@ -265,6 +277,9 @@
                 <li>
                     <a href="{{url('projet')}}" class="waves-effect"><i class="ti-receipt"></i><span> Projets </span></a>
                 </li>
+                <li>
+                    <a href="{{url('email')}}" class="waves-effect"><i class="ti-email"></i><span> Envoyer mail </span></a>
+                </li>
                 @endif
                 @if(Auth::user()->hasRole('chefprojet'))
                 <li>
@@ -278,6 +293,9 @@
                 
                 <li>
                     <a href="{{url('calendrier')}}" class="waves-effect"><i class="ti-calendar"></i><span> Calendrier </span></a>
+                </li>
+                <li>
+                    <a href="{{url('email')}}" class="waves-effect"><i class="ti-email"></i><span> Envoyer mail </span></a>
                 </li>
                 @endif
                 @if(Auth::user()->hasRole('membreprojet'))

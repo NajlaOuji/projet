@@ -113,26 +113,6 @@ class UserController extends Controller
     }
    
 
-    public function confirm(Request $request)
-    {
-        $user = User::find($request->id);
-
     
-            $conversation = Conversation::create([
-                'from' => auth()->user()->id,
-                'to' => $user->id,
-               
-            ]);
-    
-            Message::create([
-                'user_id' => auth()->user()->id,
-                'conversation_id' => $conversation->id,
-                'content' => "Bonjour."
-            ]);
-            Notification::send($user, new ConverNotification(auth()->user()->name));
-            return back();
-        
-
-    }
    
 }

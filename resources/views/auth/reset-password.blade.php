@@ -49,7 +49,7 @@ p{
 
             <div class="p-3"> 
                 <br>
-            <h4 class="font-18 m-b-5 text-center">Reset Password</h4>
+            <h4 class="font-18 m-b-5 text-center">Réinitialiser mot de passe</h4>
                         <br>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -69,7 +69,7 @@ p{
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('Mot de passe')" />
                 <div class="input-group mb-3">
                 <x-input id="password" class="form-control" type="password" name="password" required />
                 <div class="input-group-append">
@@ -80,7 +80,7 @@ p{
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label for="password_confirmation" :value="__('Confirmer Mot de passe')" />
                 <div class="input-group mb-3">
                     <x-input id="password_confirmation" class="form-control"
                                     type="password"
@@ -95,7 +95,7 @@ p{
             <div class="col-12 text-right">
             <br>
                 <x-button class="btn btn-primary w-md waves-effect waves-light">
-                    {{ __('Reset password') }}
+                    {{ __('Réinitialiser') }}
                 </x-button>
                 </div>
             </div>

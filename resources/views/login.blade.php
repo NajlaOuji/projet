@@ -61,7 +61,7 @@ color: #7a797e;
             
             <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter Email"type="email" name="email" :value="old('email')" required autofocus />
+                  <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Entrer Email"type="email" name="email" :value="old('email')" required autofocus />
                   @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -73,9 +73,9 @@ color: #7a797e;
             <!-- Password -->
             
             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">Mot de passe</label>
                                 <div class="input-group mb-3">
-                                <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" id="password" placeholder="Enter password">
+                                <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" id="password" placeholder="Entrer mot de passe">
                                 <div class="input-group-append">
                                 <i class="input-group-text fas fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i>
                                  </div>
@@ -98,14 +98,14 @@ color: #7a797e;
                                     </div>
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                   <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button></a>
+                                   <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Connecter</button></a>
                                 </div>
             </div>
 
             <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-12 m-t-20">
                                 @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}"><i class="mdi mdi-lock"></i> Forgot your password?</a>
+                                    <a href="{{ route('password.request') }}"><i class="mdi mdi-lock"></i> Mot de passe oublié?</a>
                                 @endif
                                 </div>
                             </div>

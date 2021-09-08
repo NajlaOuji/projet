@@ -11,6 +11,7 @@ use App\Models\Projet;
 use App\Models\Event;
 use App\Notifications\ProjetNotification;
 use App\Notifications\AdminNotification;
+use App\Notifications\ClientNotification;
 use Brian2694\Toastr\Facades\Toastr;
 
 
@@ -51,7 +52,7 @@ class ProjetController extends Controller
         $request->validate([
             'titre' => 'required|string|max:255',
             'description' => 'required',
-            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:2048',
+            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf,docx',
             'client' => 'required',
             'chef'  => 'required',
             'datedeb' => 'required|date|before:datefin|after:today',
@@ -136,6 +137,7 @@ class ProjetController extends Controller
     {
         $c4 = 1;
         $user= User::find(23);
+        $user2= User::find($request->clientnotif);
         $et = 'Terminé';
         try{
         $projet = Projet::find($request->idprojet);
@@ -147,6 +149,7 @@ class ProjetController extends Controller
         if($request->etat === $et)
         {
             Notification::send($user, new AdminNotification($request->titreprojet));
+            Notification::send($user2, new ClientNotification($request->titreprojet));
         }
         return back();
     }catch(\Exception $e){
@@ -157,10 +160,10 @@ class ProjetController extends Controller
 
     }
 
-    public function delete($id,$id_chef)
+    public function delete($id,$titre_projet)
     {
         $projet = Projet::where('id',$id)->delete();
-        $event = Event::where('chef',$id_chef)->delete();
+        $event = Event::where('title',$titre_projet)->delete();
         Toastr::success('Projet deleted successfully :)','Success');
         return back();
     }

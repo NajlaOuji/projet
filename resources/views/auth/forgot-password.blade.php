@@ -32,9 +32,9 @@
 
             <div class="p-3"> 
                 <br>
-            <h4 class="font-18 m-b-5 text-center">Forgot Password</h4>
+            <h4 class="font-18 m-b-5 text-center">Mot de passe oublié</h4>
                         <div class="alert alert-success m-t-30" role="alert">
-                            Enter your Email and we will email you a password reset link that will allow you to choose a new one.
+                        Entrez votre e-mail et nous vous enverrons par e-mail un lien de réinitialisation de mot de passe qui vous permettra d'en choisir un nouveau.
                         </div>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -49,14 +49,14 @@
             <br>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="form-control" type="email" name="email" placeholder="Enter email" :value="old('email')" required />
+                <x-input id="email" class="form-control" type="email" name="email" placeholder="Entrer email" :value="old('email')" required />
             </div>
 
             <div class="form-group row m-t-20">
             <div class="col-12 text-right">
             <br>
                 <x-button class="btn btn-primary w-md waves-effect waves-light">
-                    {{ __('Reset') }}
+                    {{ __('Réinitialiser') }}
                 </x-button>
                 </div>
             </div>

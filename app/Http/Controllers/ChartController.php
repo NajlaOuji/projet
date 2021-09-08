@@ -59,8 +59,12 @@ $count3 = DB::table('role_user')
 $count4 = DB::table('role_user')
         ->where('role_id','like','%'.$c4.'%')
         ->count();
+$client = Auth::user()->id;       
+$countcl = DB::table('projets')
+        ->where('id_client','like','%'.$client.'%')
+        ->count();
 
- $result=DB::select(DB::raw("select count(*) as total_etat,etat 
+$result=DB::select(DB::raw("select count(*) as total_etat,etat 
                             from projets group by etat"));     
 $result2=DB::select(DB::raw("select count(*) as total_e,etat 
                             from projets where id_chef=$var group by etat"));
@@ -81,6 +85,12 @@ $result2=DB::select(DB::raw("select count(*) as total_e,etat
 $us = Auth::user()->id;
 $user = User::find(1);
 $taches = Tache::where('id_membre','like','%'.$us.'%')->get();
+$tachesD = Tache::where('id_membre','like','%'.$us.'%')
+->orderByDesc('id')
+->limit(3)
+->get();
+$projets = Projet::where('id_client','like','%'.$us.'%')
+->get();
 $e1= 'En attente';
 $e2= 'En cours';
 $e3= 'Terminé';
@@ -96,8 +106,8 @@ $ct3 = DB::table('taches')
         ->where('id_membre','like','%'.$us.'%')
         ->where('etat','like','%'.$e3.'%')
         ->count();
- return view('accueil',['Months' => $month, 'Data' => $data, 'Titre' => $titrechef, 'Tau' => $taux, 'Count1' => $count1, 'Count2' => $count2, 
- 'Count3' => $count3, 'Count4' => $count4, 'Datas' => $datas, 'Datas2' => $datas2, 'taches' => $taches, 'ct1' => $ct1, 'ct2' => $ct2, 'ct3' => $ct3, 'user' => $user]);
+ return view('accueil',['Months' => $month, 'Data' => $data, 'Titre' => $titrechef, 'Tau' => $taux, 'Count1' => $count1, 'Count2' => $count2, 'countcl' => $countcl,'tachesD' => $tachesD,
+ 'Count3' => $count3, 'Count4' => $count4, 'Datas' => $datas, 'Datas2' => $datas2, 'taches' => $taches, 'ct1' => $ct1, 'ct2' => $ct2, 'ct3' => $ct3, 'user' => $user, 'projets' => $projets]);
 
 }    
 
